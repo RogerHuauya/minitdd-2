@@ -51,9 +51,3 @@ This project provides an API for managing sensor data for SmartNet Solutions, a 
 - **Testing**:
   - Python tests are implemented using pytest.
   - C++ functionalities are tested using GTest.
-
-#### Contribution
-Contributions to the project are welcome. Please ensure that all contributions pass existing tests and include additional tests if new features are added.
-
-#### License
-The software is provided "as is", without warranty of any kind, express or implied. Usage is subject to license terms which must be agreed upon before usage.
