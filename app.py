@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI, HTTPException
 from typing import List, Dict
-import example as monitoring
+import iot as monitoring
 
 api = FastAPI()
 
@@ -14,6 +14,7 @@ devices = {
     "SUNLIGHT": sunlight_monitor,
     "TRAFFIC_FLOW": vehicle_flow_monitor
 }
+
 
 @api.post("/add_single/")
 async def add_single(timestamp: int, device_type: str, measurement: float):
@@ -29,6 +30,7 @@ async def add_single(timestamp: int, device_type: str, measurement: float):
         "measurement": measurement
     }
 
+
 @api.post("/add_multiple/")
 async def add_multiple(device_type: str, measurements: List[Dict]):
     if device_type not in devices:
@@ -42,6 +44,7 @@ async def add_multiple(device_type: str, measurements: List[Dict]):
         "device_type": device_type,
         "measurements": measurements
     }
+
 
 @api.get("/max_accumulated/")
 async def max_accumulated(device_type: str):
@@ -64,6 +67,7 @@ async def max_accumulated(device_type: str):
         "error": None,
         "status": 200
     }
+
 
 if __name__ == "__main__":
     uvicorn.run(api, host="127.0.0.1", port=8000)
